@@ -14,9 +14,15 @@ const images = [
 ];
 
 const gallery = document.querySelector('.gallery');
+gallery.style.display = "flex";
+gallery.style.gap = "5px";
+gallery.style.flexDirection = "column";
 
-images.forEach(element => {
-  const item = document.createElement('li');
-  item.insertAdjacentHTML('afterbegin', `<img src="${element.url}" alt="${element.alt}" class="picture">`);
-  gallery.append(item);
-});
+const item = images.map(({ url, alt }) => `<li><img src="${url}" alt="${alt}" width = "600"></li>`).join('');
+gallery.insertAdjacentHTML('beforeend', item);
+
+// images.forEach(element => {
+//   const item = document.createElement('li');
+//   item.insertAdjacentHTML('afterbegin', `<img src="${element.url}" alt="${element.alt}" class="picture">`);
+//   gallery.append(item);
+// });
